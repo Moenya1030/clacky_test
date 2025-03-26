@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -13,7 +12,6 @@ import (
 	"task-manager/internal/models"
 	"task-manager/internal/routes"
 	"task-manager/pkg/database"
-	"task-manager/pkg/utils"
 )
 
 func main() {
@@ -40,9 +38,6 @@ func main() {
 		log.Fatalf("Failed to setup database models: %v", err)
 	}
 
-	// Schedule periodic session cleanup
-	go scheduleSessionCleanup()
-
 	// Initialize Gin router
 	router := gin.New()
 
@@ -64,16 +59,5 @@ func main() {
 	log.Printf("Server starting on %s", serverAddr)
 	if err := router.Run(serverAddr); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
-	}
-}
-
-// scheduleSessionCleanup runs the session cleanup process periodically
-func scheduleSessionCleanup() {
-	ticker := time.NewTicker(1 * time.Hour)
-	defer ticker.Stop()
-
-	for range ticker.C {
-		log.Println("Running session cleanup")
-		utils.CleanupSessions()
 	}
 }
