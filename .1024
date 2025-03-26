@@ -3,4 +3,8 @@
 # For more information, please refer to the documentation: https://docs.clacky.ai/clacky-workspace/configure
 
 # Command to run when "Run" button clicked
-run_command: echo "Hello World"
+# Compile command before running the project
+compile_command: go build -o clacky_test
+
+# Command to run when "Run" button clicked
+run_command: ./clacky_test
