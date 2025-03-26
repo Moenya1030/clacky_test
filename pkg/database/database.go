@@ -63,7 +63,7 @@ func LoadDBConfig() DBConfig {
 		Host:           getEnvOrDefault("DB_HOST", "localhost"),
 		Port:           getEnvOrDefault("DB_PORT", "3306"),
 		User:           getEnvOrDefault("DB_USER", "root"),
-		Password:       getEnvOrDefault("DB_PASSWORD", ""),
+		Password:       getEnvOrDefault("DB_PASSWORD", "vQFmcfVM"),
 		Name:           getEnvOrDefault("DB_NAME", "task_manager"),
 		Charset:        getEnvOrDefault("DB_CHARSET", "utf8mb4"),
 		ParseTime:      parseTime,
