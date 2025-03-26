@@ -103,10 +103,10 @@ func (s *UserService) Login(req UserLoginRequest) (*AuthResponse, error) {
 		return nil, errors.New("invalid email or password")
 	}
 
-	// Generate session ID
+	// Generate JWT token
 	token, err := utils.GenerateToken(user.ID)
 	if err != nil {
-		return nil, fmt.Errorf("failed to generate session: %w", err)
+		return nil, fmt.Errorf("failed to generate JWT token: %w", err)
 	}
 
 	return &AuthResponse{
